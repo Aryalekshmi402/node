@@ -6,4 +6,5 @@ setTimeout=(() =>
 },1);
 
 console.log('hai');
+console.log('am arya');
 console.log('hello');
