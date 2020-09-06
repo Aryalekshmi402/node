@@ -9,32 +9,37 @@ module.exports.authenticate=function(req,res){
    
     connection.query('SELECT * FROM users WHERE email = ?',[email], function (error, results, fields) {
       if (error) {
-          res.json({
+        res.send('there are some error with query')
+        
+          /*res.json({
             status:false,
             message:'there are some error with query'
-            })
+            })*/
       }else{
        
         if(results.length >0){
   decryptedString = cryptr.decrypt(results[0].password);
             if(password==decryptedString){
-                res.json({
+              res.send('successfully authenticated')
+                /*res.json({
                     status:true,
                     message:'successfully authenticated'
-                })
+                })*/
             }else{
-                res.json({
+              res.send('Email and password does not match')
+                /*res.json({
                   status:false,
                   message:"Email and password does not match"
-                 });
+                 });*/
             }
           
         }
         else{
-          res.json({
+          res.send('Email does not exits')
+          /*res.json({
               status:false,    
             message:"Email does not exits"
-          });
+          });*/
         }
       }
     });
