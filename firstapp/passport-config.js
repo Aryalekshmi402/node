@@ -10,6 +10,7 @@ const bcrypt=require('bcrypt');
 {
     const  authenticateUser=async(email,password,done)=>{
         const user=getUserByEmail(email)
+        console.log({user});
         if(user == null)
         {
          return done(null,false,{message:'no user with that mail'})
